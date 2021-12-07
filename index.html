@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="author" content="Vincent James Christaldi II">
+    <meta name="application-name" content="Official Christmas Countdown">
+    <meta name="description" content="A basic Christmas countdown.">
+    <meta name="keywords" content="Xmas, Christmas, countdown, 12/25">
+    <title>Christmas Countdown</title>
+
+    <!-- CSS -->
+    <style media="screen">
+      body {
+        @import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@700&display=swap');
+        background-color: #bf5a5a;
+        font-family: 'Fuzzy Bubbles', cursive;
+        * {
+  overflow: hidden;
+}
+
+$SNOWDROPS_LENGTH: 100;
+
+
+.g-snows {
+  width: 100vw;
+  height: 100vh;
+  background-color: navy;
+  background-image: linear-gradient(to bottom, navy, darkgray);
+}
+
+.g-snows > li {
+
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  border-radius: 100%;
+  background-color: #FFFFFF;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  animation-name: snow-drop;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+
+
+  $snow-size-base: 30;
+  $browser-buffer: 50;
+  $left-position: 100 + $browser-buffer;
+  $animate-speed-base: 10000;
+  $minimum-falling-speed: 5000;
+  $animate-delay-base: 5000;
+  $blur-base: 5;
+
+  @for $i from 1 through $SNOWDROPS_LENGTH {
+    $size: abs(random($snow-size-base) - random($snow-size-base)) + 0px;
+
+    &:nth-child(#{$i}) {
+      left: abs(random($left-position) - random($left-position)) + 0%;
+      width: $size;
+      height: $size;
+      animation-duration: abs(random($animate-speed-base) - random($animate-speed-base)) + $minimum-falling-speed + 0ms;
+      animation-delay: abs(random($animate-delay-base)) + 0ms;
+      filter: blur(abs(random($blur-base) - random($blur-base)) + 0px);
+    }
+  }
+}
+
+@keyframes snow-drop {
+  $window-height-threshold: 1.5;
+
+  0% {
+    transform: translate(0, 0);
+    opacity: 0.5;
+    margin-left: 0;
+  }
+
+  10% {
+    margin-left: 15px;
+  }
+
+  20% {
+    margin-left: 20px;
+  }
+
+  25% {
+    transform: translate(0, 250px / $window-height-threshold);
+    opacity: 0.75;
+  }
+
+  30% {
+    margin-left: 15px;
+  }
+
+  40% {
+    margin-left: 0;
+  }
+
+  50% {
+    transform: translate(0, 500px / $window-height-threshold);
+    opacity: 1;
+    margin-left: -15px;
+  }
+
+  60% {
+    margin-left: -20px;
+  }
+
+  70% {
+    margin-left: -15px;
+  }
+
+  75% {
+    transform: translate(0, 750px / $window-height-threshold);
+    opacity: 0.5;
+  }
+
+  80% {
+    margin-left: 0;
+  }
+
+  100% {
+    transform: translate(0, 1000px / $window-height-threshold);
+    opacity: 0;
+  }
+}
+      }
+
+    </style>
+
+    <!-- JS -->
+    <script type="text/javascript">
+
+      /* Variables */
+      var date = new Date();
+      var month = Math.abs(date.getMonth() - 11);
+      var day = date.getDate();
+      var hour = Math.abs(date.getHours() - 23);
+      var minute = Math.abs(date.getMinutes() - 59);
+      var second = Math.abs(date.getSeconds() - 59);
+      var milliseconds = Math.abs(date.getMilliseconds() - 999);
+
+      if (date.getMonth() == 0) {   // January
+        var days = day;
+      }
+      if (date.getMonth() == 1) {  // Febuary
+        var days = day + 31;
+      }
+      if (date.getMonth() == 2) {  // March
+        var days = day + 59;
+      }
+      if (date.getMonth() == 3) {  // April
+        var days = day + 90;
+      }
+      if (date.getMonth() == 4) {  // May
+        var days = day + 120;
+      }
+      if (date.getMonth() == 5) {  // June
+        var days = day + 151;
+      }
+      if (date.getMonth() == 6) { // July
+        var days = day + 181;
+      }
+      if (date.getMonth() == 7) { // August
+        var days = day + 212;
+      }
+      if (date.getMonth() == 8) { // September
+        var days = day + 243;
+      }
+      if (date.getMonth() == 9) { // October
+        var days = day + 273;
+      }
+      if (date.getMonth() == 10) { // November
+        var days = day + 304;
+      }
+      if (date.getMonth() == 11) { // December
+        var days = day + 334;
+      }
+
+      days = Math.abs(days - 358);
+      var total_hours = (days * 23) + hour;
+      var total_minutes = (total_hours * 59) + minute;
+      var total_seconds = (total_minutes * 59) + second;
+      var total_milli = (total_seconds * 999) + milliseconds;
+      var total_micro = (total_seconds * 999999) + milliseconds;
+
+      </script>
+      <div style="text-align: center;">
+        <script>
+          document.write("<span style=\"color:#00a1e6;font-size:2em;font-family:Lucida Handwriting;\">" + month + " months,<br> " + days + " days,<br> " + hour + " hours,<br> " + minute + " minutes, <br>" +  second + " seconds, and<br> " + milliseconds + " milliseconds.<br>");
+          </script>
+        <br>
+        <script>
+          document.write("" + total_hours + " total hours.");
+        </script>
+        <br>
+        <script>
+          document.write("" + total_minutes + " total minutes");
+        </script>
+        <br>
+        <script>
+          document.write("" + total_seconds + " total seconds.");
+        </script>
+        <br>
+        <script>
+          document.write("" + total_milli + " total milliseconds.");
+        </script>
+      </div>
+      <script>
+      setTimeout(function(){
+       window.location.reload(1);
+    }, 1);
+  
+    </script>
+
+  </head>
+  <body>
+
+
+
+  </body>
+</html>
