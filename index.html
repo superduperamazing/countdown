@@ -15,6 +15,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@700&display=swap');
         background-color: #e30000;
         font-family: 'Fuzzy Bubbles', cursive;
+        overflow-y: hidden;
         
 
     </style>
@@ -26,8 +27,8 @@
       var date = new Date();
       var month = Math.abs(date.getMonth() - 11);
       var day = date.getDate();
-      var hour = Math.abs(date.getHours() - 23);
-      var minute = Math.abs(date.getMinutes() - 59);
+      var hour = (Math.abs(date.getHours() - 23) + 8;
+      var minute = (Math.abs(date.getMinutes() - 59) + 30;
       var second = Math.abs(date.getSeconds() - 59);
       var milliseconds = Math.abs(date.getMilliseconds() - 999);
 
@@ -96,6 +97,10 @@
         <br>
         <script>
           document.write("" + total_milli + " total milliseconds until Christmas.");
+        </script>
+        <br><br><br>
+        <script>
+          document.write("<i>Until Christmas Morning, 8:30 AM</i>");
         </script>
       </div>
       <script>
